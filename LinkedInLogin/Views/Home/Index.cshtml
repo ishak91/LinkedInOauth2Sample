@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+@if(User.Identity.IsAuthenticated){
+    <br /><br />
+    <table class="table table-striped">
+    @foreach (var item in User.Claims)
+    {
+        <tr>
+            <td>@item.Type</td>
+            <td>@item.Value</td>
+        </tr>
+    }
+   
+    </table>
+
+}
+@if (!User.Identity.IsAuthenticated)
+{
+    <div class="container" >
+        <br /><br /><br /><br />
+        <a style="margin-left:35%" href="/login"><img src="~/images/Sign-in-Large---Default.png" /></a>
+    </div>
+   
+}
+
